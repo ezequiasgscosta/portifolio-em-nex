@@ -1,0 +1,41 @@
+
+
+@import "tailwindcss";
+
+@theme {
+  /* FUNDOS */
+  --color-branco: #FFFFFF;
+  --color-cinza-claro: #F5F0F8;
+  --color-marrom:#2a2623 ;
+
+  /* TEXTOS */
+  --color-roxo-escuro: #2A0048;
+  --color-preto: #000000;
+  --color-cinza-medio: #8B858F;
+
+  /* BOTÕES E INTERAÇÃO */
+  --color-pink: #A90072;
+  --color-roxo-meio: #560072;
+  --color-roxo-claro: #800080;
+
+  /* SINALIZAÇÃO */
+  --color-ouro-destaque: #FFD700;
+  --color-vermelho: #FF0000;
+  --color-verde-sucesso: #00A86B;
+}
+
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+};
+
+button {
+  cursor:pointer;
+};
+
+button:hover{
+  background-color: var(--color-cinza-claro);
+}
+
+
+
