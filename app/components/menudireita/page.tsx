@@ -17,7 +17,7 @@ export default function MenuDireita() {
 
     return (
         <section className="border w-1/5 max-w-[200px] h-[60%] flex flex-col justify-around items-center text-center text-[1em]
-            border-t-transparent
+            border-t-transparent xl:h-[80%]
         ">
           
             {redesSociais.map((rede, index) => (

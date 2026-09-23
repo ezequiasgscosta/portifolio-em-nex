@@ -9,8 +9,8 @@ type MenuEsquerdoProps = {
 export default function MenuEsquerdo({ onOpenPopup }: MenuEsquerdoProps) {
 
     return (
-        <menu className="border-b border-r h-[80%] w-[30%] min-w-[160px] max-w-[350px] flex flex-col items-left justify-around
-            lg:h-[95%]
+        <menu className="border-b border-r h-[100%] w-[30%] min-w-[160px] max-w-[350px] flex flex-col items-left justify-around
+           pb-5
         ">
             <div><button className="border w-[150px] h-13 rounded-r-xl lg:w-[300px] h-16" onClick={() => onOpenPopup("projetosSemIa")}>
                 Projetos sem IA
