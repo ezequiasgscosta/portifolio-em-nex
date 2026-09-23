@@ -26,7 +26,7 @@ export default function Rodape({ onOpenPopup }: RodapeProps) {
 
             <section className="w-[90%] h-2/4 border rounded-lg text-2xl 
              flex items-center justify-center">
-                <button className="">Contatar</button>
+                <button type="button" onClick={() => onOpenPopup("contratar")}>Contatar</button>
             </section>
 
         </footer>
