@@ -16,16 +16,16 @@ export default function AnimatedPresence ({
     children,
 }: AnimatedPresenceProps) {
     const [mounted, setMounted] = useState(isOpen)
+    const [lastChildren, setLastChildren] = useState(children)
 
-    if (!mounted) {
-        if (!isOpen) {
-            return null
-        }
+    if (!mounted && !isOpen) {
+        return null
     }
 
     function handleAnimationEnd (event: AnimationEvent<HTMLDivElement>) {
         if (event.target === event.currentTarget && !isOpen) {
             setMounted(false)
+            setLastChildren(null)
         }
     }
 
@@ -36,10 +36,15 @@ export default function AnimatedPresence ({
             data-animation={animation}
             data-state={isOpen ? 'open' : 'closing'}
             className={`animated-presence ${className}`}
-            onAnimationStart={() => setMounted(true)}
+            onAnimationStart={() => {
+                if (isOpen) {
+                    setMounted(true)
+                    setLastChildren(children)
+                }
+            }}
             onAnimationEnd={handleAnimationEnd}
         >
-            {children}
+            {isOpen ? children : lastChildren}
         </div>
     )
 }
