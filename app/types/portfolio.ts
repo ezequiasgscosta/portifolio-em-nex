@@ -19,6 +19,7 @@ export type CertificateItem = {
 
 export type PortfolioData = {
   siteName: string
+  heroBackgroundUrl: string
   bio: {
     facts: string[]
     imageUrl: string
@@ -31,6 +32,7 @@ export type PortfolioData = {
 
 export const defaultPortfolioData: PortfolioData = {
   siteName: 'Ezequias Gs Costa',
+  heroBackgroundUrl: '/eren.png',
   bio: {
     facts: ['27 Anos', 'Casado', 'Casa Propria', 'Veiculo', 'Musico', 'Gamer'],
     imageUrl: '/eren.png',
@@ -91,6 +93,7 @@ export function isPortfolioData(value: unknown): value is PortfolioData {
   }
 
   return typeof value.siteName === 'string'
+    && typeof value.heroBackgroundUrl === 'string'
     && Array.isArray(value.bio.facts)
     && value.bio.facts.every((fact) => typeof fact === 'string')
     && typeof value.bio.imageUrl === 'string'
