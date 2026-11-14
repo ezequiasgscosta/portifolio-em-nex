@@ -15,7 +15,8 @@ export default function Projetos ({ onClose, items }: ProjetosProps){
         ">
             <PortfolioLinkCards items={items} />
 
-            <button type="button" onClick={onClose} className="sticky mt-auto bottom-2 w-auto bg-sub-bg! border border-black">VOLTAR</button>
+            <button type="button" onClick={onClose} className="sticky mt-auto bottom-2 w-auto bg-sub-bg! border border-black
+            md:w-[30vw]">VOLTAR</button>
 
         </section>
     )

@@ -21,10 +21,10 @@ export default function Certificados ({ onClose, items }: CertificadosProps){
             ) : items.map((item) => (
                 <article
                     key={item.id}
-                    className="mt-3 flex min-h-[50vh] w-[90%] flex-col items-center justify-around rounded-2xl bg-sub-bg p-4"
+                    className="mt-3 flex min-h-[50vh] w-[90%] flex-col items-center justify-around rounded-2xl bg-sub-bg p-4 lg:min-h-[70vh] lg:w-[85%]"
                 >
                     <h2 className="text-xl">{item.name}</h2>
-                    <div className="h-[38vh] w-[80%] overflow-hidden rounded-sm border">
+                    <div className="h-[38vh] w-[80%] overflow-hidden rounded-sm  lg:h-[60vh] lg:w-[75%]">
                         {item.mimeType === 'application/pdf' ? (
                             <iframe
                                 src={item.url}

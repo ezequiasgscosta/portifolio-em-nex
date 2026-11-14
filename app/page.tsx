@@ -79,7 +79,8 @@ export default function HOME () {
       )}
       <Cabecario nome={portfolio.siteName}/>
       <section
-        className="h-[80dvh] flex items-center justify-center bg-[size:100%] bg-top bg-no-repeat"
+        className="h-[80dvh] flex items-center justify-center bg-[size:100%] bg-top bg-no-repeat
+                  md:bg-[size:50dvh] "
         style={{
           backgroundImage: pagina === 'inicio'
             ? `url(${JSON.stringify(portfolio.heroBackgroundUrl)})`
@@ -146,7 +147,7 @@ export default function HOME () {
         </div>
       )}
       {!menuAberto && !contatosAbertos && !popupAberto && (
-        <button
+        <button className="xl:fixed xl:bottom-8 xl:right-[20vw] xl:z-50 xl:rounded-xl xl:w-[60vw] xl:px-6 xl:py-3 xl:text-lg"
           type="button"
           aria-expanded={menuAberto}
           aria-controls="menu-opcoes"
