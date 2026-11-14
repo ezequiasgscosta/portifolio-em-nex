@@ -19,9 +19,11 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ## Supabase
 
 Configure `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` in
-`.env.local` and in the production environment. The admin page has a button
-that sends a real database query to Supabase to register activity. It is manual,
-not scheduled, and does not guarantee that a Free project will never be paused.
+`.env.local` and in the production environment. The endpoint
+`/api/supabase/keep-alive` is scheduled every 12 hours through Vercel Cron.
+
+In production, configure `CRON_SECRET` in Vercel to protect manual requests to
+the endpoint. Vercel sends this value automatically when invoking the cron.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit.
 

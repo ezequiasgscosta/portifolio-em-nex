@@ -192,11 +192,6 @@ export default function AdminPage() {
   const [authenticated, setAuthenticated] = useState(false)
   const [authReady, setAuthReady] = useState(false)
   const [busy, setBusy] = useState(false)
-  const [activityCheckBusy, setActivityCheckBusy] = useState(false)
-  const [activityMessage, setActivityMessage] = useState<{
-    type: 'success' | 'error'
-    text: string
-  } | null>(null)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
@@ -361,43 +356,6 @@ export default function AdminPage() {
 
     setAuthenticated(false)
     setSuccessMessage(null)
-  }
-
-  async function handleSupabaseActivityCheck() {
-    if (!supabaseClient) {
-      setActivityMessage({
-        type: 'error',
-        text: 'O cliente Supabase não está configurado.',
-      })
-      return
-    }
-
-    setActivityCheckBusy(true)
-    setActivityMessage(null)
-
-    try {
-      const { data, error } = await supabaseClient
-        .from('portfolio_content')
-        .select('id')
-        .eq('id', 'main')
-        .maybeSingle()
-
-      if (error) {
-        throw new Error(`Não foi possível registrar atividade no Supabase: ${error.message}`)
-      }
-      if (!data) {
-        throw new Error('O registro principal do portfólio não foi encontrado no Supabase.')
-      }
-
-      setActivityMessage({
-        type: 'success',
-        text: `Consulta concluída em ${new Date().toLocaleString('pt-BR')}.`,
-      })
-    } catch (error) {
-      setActivityMessage({ type: 'error', text: messageFromError(error) })
-    } finally {
-      setActivityCheckBusy(false)
-    }
   }
 
   async function handleCertificateFile(id: string, file: File | undefined) {
@@ -668,35 +626,6 @@ export default function AdminPage() {
           </form>
         ) : (
           <>
-            <section className="space-y-3 rounded-xl border border-gray-300 bg-white p-5 text-left">
-              <h2 className="text-xl font-semibold">Atividade do Supabase</h2>
-              <p>
-                Esta ação faz uma consulta real ao banco. Use-a periodicamente
-                para registrar atividade; ela é manual e não garante que o
-                Supabase Free nunca pause o projeto.
-              </p>
-              <button
-                type="button"
-                disabled={busy || activityCheckBusy}
-                onClick={() => void handleSupabaseActivityCheck()}
-                className="w-auto rounded bg-roxo-meio px-4 py-2 text-white disabled:opacity-60"
-              >
-                {activityCheckBusy ? 'Consultando Supabase...' : 'Registrar atividade no Supabase'}
-              </button>
-              {activityMessage && (
-                <p
-                  role={activityMessage.type === 'error' ? 'alert' : 'status'}
-                  className={`rounded border p-3 ${
-                    activityMessage.type === 'error'
-                      ? 'border-red-700 bg-red-100 text-red-900'
-                      : 'border-green-700 bg-green-100 text-green-900'
-                  }`}
-                >
-                  {activityMessage.text}
-                </p>
-              )}
-            </section>
-
             <div className="flex justify-end">
               <button type="button" disabled={busy} onClick={() => void handleLogout()} className="w-auto rounded border border-gray-500 px-4 py-2 disabled:opacity-60">
                 Sair

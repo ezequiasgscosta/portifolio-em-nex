@@ -19,7 +19,7 @@ export default function Menu ({
 }: MenuProps) {
     
     return (
-        <menu id="menu-opcoes" className="menu-botoes pointer-events-auto fixed top-1/3 left-1/2 z-50 grid w-[80vw] -translate-x-1/2 grid-cols-1 gap-10">
+        <menu id="menu-opcoes" className="menu-botoes fixed top-1/3 left-1/2  z-50 grid w-[80vw] -translate-x-1/2 grid-cols-1 gap-6">
             <button type="button" className="botao-voltar" onClick={onClose}>Voltar</button>
             <button type="button" onClick={onQuemSou}>QUEM SOU</button>
             <button type="button" onClick={onProjetos}>PROJETOS</button>

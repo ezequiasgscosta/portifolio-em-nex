@@ -60,112 +60,15 @@ body {
     line-height: 2rem;
     font-weight: 400;
     font-style: normal;
-    transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    transition: background-color 0.2s ease;
   }
 
   button:hover {
     background-color: var(--color-roxo-meio);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgb(42 0 72 / 22%);
   }
 
   button:active {
     background-color: var(--color-roxo-claro);
-    transform: scale(0.98);
-  }
-}
-
-.animated-presence {
-  will-change: opacity, transform, filter;
-}
-
-.animated-presence[data-animation="panel"][data-state="open"] {
-  animation: presence-enter 0.42s cubic-bezier(0.2, 0.8, 0.2, 1) both;
-}
-
-.animated-presence[data-animation="panel"][data-state="closing"] {
-  pointer-events: none;
-  animation: presence-exit 0.28s cubic-bezier(0.4, 0, 1, 1) both;
-}
-
-.animated-presence[data-animation="overlay"][data-state="open"] {
-  animation: overlay-enter 0.32s ease-out both;
-}
-
-.animated-presence[data-animation="overlay"][data-state="closing"] {
-  pointer-events: none;
-  animation: overlay-exit 0.28s ease-in both;
-}
-
-.animated-presence[data-animation="overlay"][data-state="open"] [role="dialog"] {
-  animation: dialog-enter 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) both;
-}
-
-.animated-presence[data-animation="overlay"][data-state="closing"] [role="dialog"] {
-  animation: dialog-exit 0.28s ease-in both;
-}
-
-@keyframes presence-enter {
-  0% {
-    opacity: 0;
-    transform: translateY(24px) scale(0.95);
-    filter: blur(7px);
-  }
-  70% {
-    opacity: 1;
-    transform: translateY(-3px) scale(1.01);
-    filter: blur(0);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    filter: blur(0);
-  }
-}
-
-@keyframes presence-exit {
-  to {
-    opacity: 0;
-    transform: translateY(12px) scale(0.97);
-    filter: blur(4px);
-  }
-}
-
-@keyframes overlay-enter {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes overlay-exit {
-  to { opacity: 0; }
-}
-
-@keyframes dialog-enter {
-  from {
-    opacity: 0;
-    transform: translateY(18px) scale(0.96);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes dialog-exit {
-  to {
-    opacity: 0;
-    transform: translateY(10px) scale(0.98);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .animated-presence,
-  .animated-presence [role="dialog"] {
-    animation-duration: 0.01ms !important;
-  }
-
-  button {
-    transition-duration: 0.01ms;
   }
 }
 
