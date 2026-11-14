@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+@theme {
+  /* FUNDOS */
+  --color-branco: #FFFFFF;
+  --color-cinza-claro: #F5F0F8;
+  --color-marrom: #2a2623;
+
+  /* TEXTOS */
+  --color-roxo-escuro: #2A0048;
+  --color-preto: #000000;
+  --color-cinza-medio: #8B858F;
+
+  /* BOTÕES E INTERAÇÃO */
+  --color-pink: #A90072;
+  --color-roxo-meio: #560072;
+  --color-roxo-claro: #800080;
+  --color-bg-cinza: #4f4f52;
+  --color-sub-bg:#7b7c7c;
+
+  /* SINALIZAÇÃO */
+  --color-ouro-destaque: #FFD700;
+  --color-vermelho: #FF0000;
+  --color-verde-sucesso: #00A86B;
+
+  /* Fontes */
+     --font-belleza: var(--font-belleza);
+    --font-open-sans: var(--font-open-sans);
+    --font-geist-sans: var(--font-geist-sans);
+    --font-geist-mono: var(--font-geist-mono);
+
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.belleza-regular {
+  font-family: var(--font-belleza), sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.open-sans-regular {
+  font-family: var(--font-open-sans), sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@layer base {
+  button {
+    cursor: pointer;
+    padding: 1rem;
+    background-color: var(--color-bg-cinza);
+    color: var(--color-branco);
+    width: 80vw;
+    border-radius: 1rem;
+    font-family: var(--font-open-sans), sans-serif;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 400;
+    font-style: normal;
+    transition: background-color 0.2s ease;
+  }
+
+  button:hover {
+    background-color: var(--color-roxo-meio);
+  }
+
+  button:active {
+    background-color: var(--color-roxo-claro);
+  }
+}
+
+.botao-voltar {
+  position: absolute;
+  top: -3rem;
+  right: 0;
+  z-index: 1;
+  box-sizing: border-box;
+  width: auto;
+  height: auto;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  border-radius: 0.5rem;
+  background-color: var(--color-roxo-claro);
+}
+
+.botao-voltar:active{
+  background-color: var(--color-roxo-claro);
+}
+
+.menu-botoes > button:not(.botao-voltar) {
+  width: 100%;
+}
+
+/* QUEM SOU */
+.quemsou {
+  color: black;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+  font-family: var(--font-open-sans), sans-serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.quemsou h1 {
+  padding-top: 20px;
+}
