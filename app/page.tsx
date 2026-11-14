@@ -4,6 +4,7 @@ import type { SupabaseClient } from '@supabase/supabase-js'
 import Cabecario from './components/Cabecario'
 import Menu from './components/Menu'
 import QuemSou from './components/QuemSou'
+import AnimatedPresence from './components/AnimatedPresence'
 import Projetos from './components/Projetos'
 import Contatos  from './components/Contatos'
 import Certificados from './components/Certificados'
@@ -86,12 +87,20 @@ export default function HOME () {
             : 'none',
         }}
       >
-        {pagina === 'quem-sou' && (
+        <AnimatedPresence
+          isOpen={pagina === 'quem-sou'}
+          animation="panel"
+          className="flex h-full w-full items-center justify-center"
+        >
           <QuemSou fatos={portfolio.bio.facts} imagem={portfolio.bio.imageUrl}/>
-        )}
+        </AnimatedPresence>
       </section>
 
-      {menuAberto && (
+      <AnimatedPresence
+        isOpen={menuAberto}
+        animation="panel"
+        className="pointer-events-none fixed inset-0 z-50"
+      >
         <Menu
           onClose={() => {
             setMenuAberto(false)
@@ -122,8 +131,12 @@ export default function HOME () {
             setMenuAberto(false)
           }}
         />
-      )}
-      {contatosAbertos && (
+      </AnimatedPresence>
+      <AnimatedPresence
+        isOpen={contatosAbertos}
+        animation="panel"
+        className="pointer-events-none fixed inset-0 z-50"
+      >
         <Contatos
           items={portfolio.contacts}
           onClose={() => {
@@ -131,20 +144,20 @@ export default function HOME () {
             setMenuAberto(true)
           }}
         />
-      )}
-      {popupAberto && (
-        <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/60">
-          {popupAberto === 'projetos' && (
-            <Projetos items={portfolio.projects} onClose={() => setPopupAberto(null)} />
-          )}
-          {popupAberto === 'certificados' && (
-            <Certificados items={certificados} onClose={() => setPopupAberto(null)} />
-          )}
-          {popupAberto === 'extensao' && (
-            <Extensao items={portfolio.extension} onClose={() => setPopupAberto(null)} />
-          )}
-        </div>
-      )}
+      </AnimatedPresence>
+      <AnimatedPresence
+        isOpen={popupAberto !== null}
+        animation="overlay"
+        className="fixed inset-0 z-40 flex items-center justify-center bg-black/60"
+      >
+        {popupAberto === 'projetos' ? (
+          <Projetos items={portfolio.projects} onClose={() => setPopupAberto(null)} />
+        ) : popupAberto === 'certificados' ? (
+          <Certificados items={certificados} onClose={() => setPopupAberto(null)} />
+        ) : popupAberto === 'extensao' ? (
+          <Extensao items={portfolio.extension} onClose={() => setPopupAberto(null)} />
+        ) : null}
+      </AnimatedPresence>
       {!contatosAbertos && !popupAberto && (
         <button
           type="button"
