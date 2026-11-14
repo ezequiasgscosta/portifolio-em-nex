@@ -11,12 +11,12 @@ export default function PortfolioLinkCards({ items }: PortfolioLinkCardsProps) {
   }
 
   return (
-    <div className="flex w-full flex-col items-center">
+    <div className="flex w-full flex-col items-center ">
       {items.map((item) => (
         <article
           key={item.id}
           className="mt-3 min-h-[250px] w-[90%] rounded-2xl bg-sub-bg p-3 
-          md:min-h-[400px] md:text-2xl lg:min-h-[420px] xl:min-h-[450px]"
+          md:min-h-[400px] md:text-2xl lg:min-h-[420px] xl:min-h-[450px] "
         >
           <div className="grid grid-cols-2 items-center">
             <h2 className="py-2 font-open-sans">{item.name}</h2>
@@ -32,36 +32,22 @@ export default function PortfolioLinkCards({ items }: PortfolioLinkCardsProps) {
             </a>
           </div>
 
-          <div className="flex min-h-[210px] flex-row items-center justify-around gap-4 md:min-h-[500px]">
+          <div className="flex min-h-[210px] flex-row items-center justify-around md:min-h-[500px]">
 
-            <div className="relative h-[260px] w-[140px] shrink-0 overflow-hidden rounded-sm border md:h-[460px] md:w-[230px]">
+            <div className="relative flex h-[180px] w-[98px] shrink-0 justify-center overflow-hidden rounded-sm border md:h-[460px] md:w-[230px]">
               <iframe
                 src={item.url}
                 title={`Prévia mobile: ${item.name}`}
-                className="absolute left-0 top-0 border-0"
-                style={{
-                  width: '430px',
-                  height: '900px',
-                  transform: 'scale(0.53)',
-                  transformOrigin: 'top left',
-                  pointerEvents: 'none',
-                }}
+                className="pointer-events-none absolute left-0 top-0 h-[900px] w-[500px] origin-top-left scale-[0.2] border-0 md:w-[430px] md:scale-[0.53]"
               />
             </div>
 
            
-            <div className="relative h-[180px] w-[180px] overflow-hidden border sm:h-[220px] sm:w-[300px] md:h-[300px] md:w-[500px] lg:h-[350px] lg:w-[650px] xl:h-[400px] xl:w-[750px]">
+            <div className="relative h-[100px] w-[180px] overflow-hidden border sm:h-[220px] sm:w-[300px] md:h-[300px] md:w-[500px] lg:h-[350px] lg:w-[650px] xl:h-[400px] xl:w-[750px]">
               <iframe
                 src={item.url}
                 title={`Prévia desktop: ${item.name}`}
-                className="absolute left-0 top-0 border-0"
-                style={{
-                  width: '1440px',
-                  height: '900px',
-                  transform: 'scale(0.52)',
-                  transformOrigin: 'top left',
-                  pointerEvents: 'none',
-                }}
+                className="pointer-events-none absolute left-0 top-0 h-[500px] w-[900px] origin-top-left scale-[0.2] border-0 sm:h-[900px] sm:w-[1440px] sm:scale-[0.52]"
               />
             </div>
           </div>
